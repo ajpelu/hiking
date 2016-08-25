@@ -10,6 +10,7 @@ library('flexdashboard')
 library('rgdal')
 library('sp')
 library('leaflet')
+library('dplyr')
 ```
 
 ```{r readData}
@@ -72,8 +73,6 @@ xx <- m@data %>%
 
 ```
 
- 
-### AnotherData 
 
 ```{r}
 # totalAscent 
@@ -94,7 +93,31 @@ total_descent <- aux_elev_diff %>%
   sum() %>% 
   round()
 
+# max elevation
+max_elev <- round(max(my_points$ele))
 
+# min elevation
+min_elev <- round(min(my_points$ele))
+
+# Distance (km)
+hike_dist <- spDists(my_points, segments=TRUE)
+total_hike_dist <- round(sum(hike_dist), 2)
 
 ```
+
+### Total Ascent 
+```{r}
+valueBox(paste(total_ascent, "m", sep=" "), icon = "fa-pencil")
+```
+
+### Total Descent
+```{r}
+valueBox(paste(total_descent, "m", sep=" "), icon = "fa-pencil")
+```
+
+### Total Distance  
+```{r}
+valueBox(paste(total_hike_dist, "km", sep=" "), icon = "fa-pencil")
+```
+
 
