@@ -1,0 +1,100 @@
+---
+title: "Untitled"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+---
+
+```{r setup, include=FALSE}
+library('flexdashboard')
+library('rgdal')
+library('sp')
+library('leaflet')
+```
+
+```{r readData}
+# Read gpx file 
+mygpx <- '/Users/ajpeluLap/Dropbox/EXCURSIONES/georoutes/2016_08_mulhacen.GPX'
+my_points <- readOGR(mygpx, layer = 'track_points', verbose = FALSE)
+mytrack <- readOGR(mygpx, layer = 'tracks', verbose = FALSE) 
+```
+
+Column {data-width=650}
+-----------------------------------------------------------------------
+
+### Map 
+
+```{r}
+mymap <- leaflet() %>% 
+  # BaseMaps 
+  addWMSTiles('http://www.ideandalucia.es/services/toporaster10/wms?',
+              layers = 'toporaster10',
+              options = WMSTileOptions(format = "image/png", transparent = FALSE),
+              attribution = '<a href="http://www.juntadeandalucia.es/institutodeestadisticaycartografia" target="_blank">Instituto de Estadística y Cartografía de Andalucía</a>',
+              group = 'Topographical') %>%
+  addWMSTiles('http://www.ideandalucia.es/wms/ortofoto2009?',
+              layers = 'oca10_2008-09',
+              options = WMSTileOptions(format = "image/png", transparent = FALSE),
+              attribution = '<a href="http://www.juntadeandalucia.es/institutodeestadisticaycartografia" target="_blank">Instituto de Estadística y Cartografía de Andalucía</a>',
+              group = 'Ortophotography 2009') %>%
+  # addWMSTiles("http://www.ign.es/wms-inspire/pnoa-ma",
+  #             layers = 'OI.OrthoimageCoverage',
+  #             options = WMSTileOptions(format = "image/png", transparent = FALSE),
+  #             attribution = 'PNOA cedido por © <a href="http://www.ign.es/ign/main/index.do" target="_blank">Instituto Geográfico Nacional de España</a>',
+  #             group = 'PNOA') %>%
+  
+  # Layers control
+  addLayersControl(position = 'bottomright',
+                   # baseGroups = c("Topographical","Ortophotography 2009","PNOA"),
+                   baseGroups = c("Topographical","Ortophotography 2009"),
+                   overlayGroups = "Hiking trail", 
+                   options = layersControlOptions(collapsed = FALSE)) %>%
+  # Add routes
+  addPolylines(data=mytrack, color='blue', group='Hiking trail') 
+
+mymap
+```
+
+Column {data-width=350}
+-------------------------------------
+    
+### Elevation Profile 
+```{r}
+# Prepare Data 
+m <- my_points[,c('ele', 'time')]
+
+
+xx <- m@data %>% 
+  mutate(t = ele - lag(ele))
+
+
+
+
+```
+
+ 
+### AnotherData 
+
+```{r}
+# totalAscent 
+m <- my_points[,c('ele', 'time')]
+
+aux_elev_diff <- m@data %>% 
+  mutate(elev_diff = ele - lag(ele))
+
+total_ascent <- aux_elev_diff %>% 
+  filter(elev_diff >= 0) %>% 
+  select(elev_diff) %>% 
+  sum() %>% 
+  round()
+
+total_descent <- aux_elev_diff %>% 
+  filter(elev_diff <= 0) %>% 
+  select(elev_diff) %>% 
+  sum() %>% 
+  round()
+
+
+
+```
+
