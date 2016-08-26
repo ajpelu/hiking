@@ -2,6 +2,7 @@
 title: "View my hiking trail: Posiciones Veleta to Mulhacen (2016-Aug)"
 output: 
   flexdashboard::flex_dashboard:
+    vertical_layout: fill
     orientation: rows
     social: ["twitter"]
     source_code: https://github.com/ajpelu/hiking
@@ -23,8 +24,8 @@ library('plotly')
 
 ```{r readData}
 # Read gpx file 
-# machine <- '/Users/ajpeluLap/' 
-mymachine <- '/Users/ajpelu/' 
+mymachine <- '/Users/ajpeluLap/' 
+# mymachine <- '/Users/ajpelu/' 
 
 mygpx <- paste0(mymachine, 'Dropbox/EXCURSIONES/georoutes/2016_08_mulhacen.GPX')
 my_points <- readOGR(mygpx, layer = 'track_points', verbose = FALSE)
@@ -93,7 +94,7 @@ valueBox(paste(max_elev, "m", sep=" "))
 ```
 
 
-Row {data-height=560}
+Row {.tabset .tabset-fade}
 -----------------------------------------------------------------------
 
 ### Map 
@@ -130,9 +131,6 @@ mymap <- leaflet() %>%
 mymap
 ```
 
-
-Row {data-height=440}
------------------------------------------------------------------------
 
 ### Elevation Profile  
 
