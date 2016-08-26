@@ -22,22 +22,16 @@ library('ggthemes')
 library('plotly')
 ```
 
+
 ```{r readData}
 # Read gpx file 
-gpxUrl <- 'https://rawgit.com/ajpelu/hiking/master/data/2016_08_tajosVirgen_elorrieta.GPX'
+mymachine <- '/Users/ajpeluLap/' 
+# mymachine <- '/Users/ajpelu/' 
 
-wd <- getwd()
-td <- tempdir()
-setwd(td)
-temp <- tempfile(fileext = ".GPX")
-download.file(gpxUrl, temp)
-mygpx <- dir(tempdir(), "*.GPX$")
-
+mygpx <- paste0(mymachine, 'Dropbox/EXCURSIONES/georoutes/2016_08_tajosVirgen_elorrieta.GPX')
 my_points <- readOGR(mygpx, layer = 'track_points', verbose = FALSE)
 mytrack <- readOGR(mygpx, layer = 'tracks', verbose = FALSE) 
-unlink(dir(td))
 ```
-
 
 ```{r}
 # totalAscent 
