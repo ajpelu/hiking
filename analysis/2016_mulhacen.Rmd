@@ -1,76 +1,32 @@
 ---
-title: "Untitled"
+title: "View my hiking trail: Posiciones Veleta to Mulhacen (2016-Aug)"
 output: 
   flexdashboard::flex_dashboard:
-    orientation: columns
+    orientation: rows
 ---
 
 ```{r setup, include=FALSE}
 library('flexdashboard')
+```
+
+```{r pacakges}
 library('rgdal')
 library('sp')
 library('leaflet')
 library('dplyr')
+library('ggplot2')
+library('ggthemes')
+library('plotly')
 ```
 
 ```{r readData}
 # Read gpx file 
-mygpx <- '/Users/ajpeluLap/Dropbox/EXCURSIONES/georoutes/2016_08_mulhacen.GPX'
+# machine <- '/Users/ajpeluLap/' 
+mymachine <- '/Users/ajpelu/' 
+
+mygpx <- paste0(mymachine, 'Dropbox/EXCURSIONES/georoutes/2016_08_mulhacen.GPX')
 my_points <- readOGR(mygpx, layer = 'track_points', verbose = FALSE)
 mytrack <- readOGR(mygpx, layer = 'tracks', verbose = FALSE) 
-```
-
-Column {data-width=650}
------------------------------------------------------------------------
-
-### Map 
-
-```{r}
-mymap <- leaflet() %>% 
-  # BaseMaps 
-  addWMSTiles('http://www.ideandalucia.es/services/toporaster10/wms?',
-              layers = 'toporaster10',
-              options = WMSTileOptions(format = "image/png", transparent = FALSE),
-              attribution = '<a href="http://www.juntadeandalucia.es/institutodeestadisticaycartografia" target="_blank">Instituto de Estadística y Cartografía de Andalucía</a>',
-              group = 'Topographical') %>%
-  addWMSTiles('http://www.ideandalucia.es/wms/ortofoto2009?',
-              layers = 'oca10_2008-09',
-              options = WMSTileOptions(format = "image/png", transparent = FALSE),
-              attribution = '<a href="http://www.juntadeandalucia.es/institutodeestadisticaycartografia" target="_blank">Instituto de Estadística y Cartografía de Andalucía</a>',
-              group = 'Ortophotography 2009') %>%
-  # addWMSTiles("http://www.ign.es/wms-inspire/pnoa-ma",
-  #             layers = 'OI.OrthoimageCoverage',
-  #             options = WMSTileOptions(format = "image/png", transparent = FALSE),
-  #             attribution = 'PNOA cedido por © <a href="http://www.ign.es/ign/main/index.do" target="_blank">Instituto Geográfico Nacional de España</a>',
-  #             group = 'PNOA') %>%
-  
-  # Layers control
-  addLayersControl(position = 'bottomright',
-                   # baseGroups = c("Topographical","Ortophotography 2009","PNOA"),
-                   baseGroups = c("Topographical","Ortophotography 2009"),
-                   overlayGroups = "Hiking trail", 
-                   options = layersControlOptions(collapsed = FALSE)) %>%
-  # Add routes
-  addPolylines(data=mytrack, color='blue', group='Hiking trail') 
-
-mymap
-```
-
-Column {data-width=350}
--------------------------------------
-    
-### Elevation Profile 
-```{r}
-# Prepare Data 
-m <- my_points[,c('ele', 'time')]
-
-
-xx <- m@data %>% 
-  mutate(t = ele - lag(ele))
-
-
-
-
 ```
 
 
@@ -102,22 +58,102 @@ min_elev <- round(min(my_points$ele))
 # Distance (km)
 hike_dist <- spDists(my_points, segments=TRUE)
 total_hike_dist <- round(sum(hike_dist), 2)
-
 ```
 
-### Total Ascent 
+Row
+-----------------------------------------------------------------------
+### Total Distance {.value-box}
 ```{r}
-valueBox(paste(total_ascent, "m", sep=" "), icon = "fa-pencil")
+valueBox(paste(total_hike_dist, "km", sep=" "), icon = "ion-android-walk")
 ```
 
-### Total Descent
+### Total Ascent {.value-box}
+
 ```{r}
-valueBox(paste(total_descent, "m", sep=" "), icon = "fa-pencil")
+# See http://ionicons.com/
+valueBox(paste(total_ascent, "m", sep=" "), 
+         caption= 'Total Ascent', icon = "ion-arrow-graph-up-right")
 ```
 
-### Total Distance  
+### Total Descent {.value-box}
 ```{r}
-valueBox(paste(total_hike_dist, "km", sep=" "), icon = "fa-pencil")
+valueBox(paste(total_descent, "m", sep=" "), icon = "ion-arrow-graph-down-right")
+```
+
+### Minimun Elevation {.value-box}
+```{r}
+valueBox(paste(min_elev, "m", sep=" "))
+```
+
+### Maximun Elevation {.value-box}
+```{r}
+valueBox(paste(max_elev, "m", sep=" "))
+```
+
+
+Row {data-height=560}
+-----------------------------------------------------------------------
+
+### Map 
+
+```{r}
+mymap <- leaflet() %>% 
+  # BaseMaps 
+  addWMSTiles('http://www.ideandalucia.es/services/toporaster10/wms?',
+              layers = 'toporaster10',
+              options = WMSTileOptions(format = "image/png", transparent = FALSE),
+              attribution = '<a href="http://www.juntadeandalucia.es/institutodeestadisticaycartografia" target="_blank">Instituto de Estadística y Cartografía de Andalucía</a>',
+              group = 'Topographical') %>%
+  addWMSTiles('http://www.ideandalucia.es/wms/ortofoto2009?',
+              layers = 'oca10_2008-09',
+              options = WMSTileOptions(format = "image/png", transparent = FALSE),
+              attribution = '<a href="http://www.juntadeandalucia.es/institutodeestadisticaycartografia" target="_blank">Instituto de Estadística y Cartografía de Andalucía</a>',
+              group = 'Ortophotography 2009') %>%
+  
+  # addWMSTiles("http://www.ign.es/wms-inspire/pnoa-ma",
+  #             layers = 'OI.OrthoimageCoverage',
+  #             options = WMSTileOptions(format = "image/png", transparent = FALSE),
+  #             attribution = 'PNOA cedido por © <a href="http://www.ign.es/ign/main/index.do" target="_blank">Instituto Geográfico Nacional de España</a>',
+  #             group = 'PNOA') %>%
+  
+  # Layers control
+  addLayersControl(position = 'bottomright',
+                   # baseGroups = c("Topographical","Ortophotography 2009","PNOA"),
+                   baseGroups = c("Topographical","Ortophotography 2009"),
+                   overlayGroups = "Hiking trail", 
+                   options = layersControlOptions(collapsed = FALSE)) %>%
+  # Add routes
+  addPolylines(data=mytrack, color='blue', group='Hiking trail') 
+
+mymap
+```
+
+
+Row {data-height=440}
+-----------------------------------------------------------------------
+
+### Elevation Profile  
+
+```{r}
+# Prepare Data 
+m <- my_points[,c('ele', 'time')]
+
+# Compute distance between points 
+dist <- spDists(m, segments=TRUE)
+my_dist <- c(0, dist)
+
+# Add to spatialDataPoints 
+m$dist <- my_dist
+m$cum_dist <- cumsum(m$dist)
+
+# Plot 
+
+p <- ggplot(as.data.frame(m), aes(x=cum_dist, y=ele)) + 
+  geom_line(size=1.05, col='blue') + 
+  xlab('Distance (Km)') + ylab('Elevation (m)') + 
+  theme_minimal() 
+
+ggplotly(p)
 ```
 
 
