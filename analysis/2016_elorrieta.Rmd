@@ -36,7 +36,6 @@ mygpx <- dir(tempdir(), "*.GPX$")
 my_points <- readOGR(mygpx, layer = 'track_points', verbose = FALSE)
 mytrack <- readOGR(mygpx, layer = 'tracks', verbose = FALSE) 
 unlink(dir(td))
-setwd()
 ```
 
 
