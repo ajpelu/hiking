@@ -3,6 +3,8 @@ title: "View my hiking trail: Posiciones Veleta to Mulhacen (2016-Aug)"
 output: 
   flexdashboard::flex_dashboard:
     orientation: rows
+    social: ["twitter"]
+    source_code: https://github.com/ajpelu/hiking
 ---
 
 ```{r setup, include=FALSE}
