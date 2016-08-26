@@ -94,7 +94,7 @@ valueBox(paste(max_elev, "m", sep=" "))
 ```
 
 
-Row {data-height=560}
+Row {.tabset .tabset-fade}
 -----------------------------------------------------------------------
 
 ### Map 
@@ -131,11 +131,7 @@ mymap <- leaflet() %>%
 mymap
 ```
 
-
-Row {data-height=440}
------------------------------------------------------------------------
-
-### Elevation Profile  
+### Elevation Profile
 
 ```{r}
 # Prepare Data 
