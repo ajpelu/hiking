@@ -1,8 +1,7 @@
 Visualize my Hiking Trails 
 =============
 
-[![GitHub version](https://badge.fury.io/gh/ajpelu%2Fhiking.svg)](https://badge.fury.io/gh/ajpelu%2Fhiking)
-
+[![GitHub version](https://img.shields.io/badge/version-1.0.0-green.svg)
 [![HitCount](https://hitt.herokuapp.com/{ajpelu||org}/{hiking}.svg)](https://github.com/ajpelu/hiking)
 
 This repo contains some code to explore my hiking trails and display them and some derived features into a map. 
@@ -20,14 +19,13 @@ For each route a dashboard is created using [R Markdownd](http://rmarkdown.rstud
 
 
 # Version 
-[![GitHub version](https://badge.fury.io/gh/ajpelu%2Fhiking.svg)](https://badge.fury.io/gh/ajpelu%2Fhiking)
+[![GitHub version](https://img.shields.io/badge/version-1.0.0-green.svg)
 
 
 # License 
 This repository is licenced as Creative Commons Attribution 4.0 ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)). You can find more info [here](/LICENSE). Anyone can use the content of the repository citing as followging:
 
-* Pérez-Luque AJ (2016). Visualize my Hiking Trails. [![GitHub version](https://badge.fury.io/gh/ajpelu%2Fhiking.svg)](https://badge.fury.io/gh/ajpelu%2Fhiking)
-. [https://github.com/ajpelu/hiking](https://github.com/ajpelu/hiking) 
+* Pérez-Luque AJ (2016). Visualize my Hiking Trails. [](https://img.shields.io/badge/version-1.0.0-green.svg). [https://github.com/ajpelu/hiking](https://github.com/ajpelu/hiking) 
 
 # Sources
 This idea is inspired on several sources. In the following list you can find them and the sources used to build this site. 
