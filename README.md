@@ -14,8 +14,9 @@ For each route a dashboard is created using [R Markdownd](http://rmarkdown.rstud
 
 
 # Routes 
-* [Climb Mulhacen (Sierra Nevada, Spain) - 2016-August](/analysis/2016_mulhacen.html)
+* [Climb Mulhacen (Sierra Nevada, Spain) - 2016-August](https://rawgit.com/ajpelu/hiking/master/analysis/2016_mulhacen.html) 
 
+* [Tajos de la Virgen - Elorrieta (Sierra Nevada, Spain) - 2016-August](https://rawgit.com/ajpelu/hiking/master/analysis/2016_elorrieta.html)
 
 
 # Version 
@@ -36,6 +37,5 @@ This idea is inspired on several sources. In the following list you can find the
 * Flexdashboard documentation [page](http://rmarkdown.rstudio.com/flexdashboard/index.html)
 * [BikeHike](http://bikehike.co.uk/index.php) 
 * Dan Goldin [post](http://dangoldin.com/2014/02/05/visualizing-gps-data-in-r/) 
-
-
+* [Links about routes](/man/Usefuls_Routes_Links.md)
  
