@@ -6,7 +6,7 @@ Visualize my Hiking Trails
 
 This repo contains some code to explore my hiking trails and display them and some derived features into a map. 
 
-The hiking trails, in [`.gpx`](http://www.topografix.com/gpx.asp) format are stored in the `/data/` folder. These files come from the GPS device. 
+The hiking trails, in [`.gpx`](http://www.topografix.com/gpx.asp) format are stored in the `/data/` folder. These files come from a GPS device. 
 
 For each route a dashboard is created using [R Markdownd](http://rmarkdown.rstudio.com/) and [flexdashboard](http://rmarkdown.rstudio.com/flexdashboard/index.html). In the `/analysis/` folder there are two files for each trail: a `.Rmd` file with the code, and a `.html` file (the rendered dashboard). 
 
