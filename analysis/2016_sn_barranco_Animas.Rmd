@@ -1,5 +1,5 @@
 ---
-title: "View my hiking trail: ROUTE NAME (YEAR-Month)"
+title: "View my hiking trail: Barranco de las Ánimas (2016-10)"
 output: 
   flexdashboard::flex_dashboard:
     vertical_layout: fill
@@ -35,7 +35,7 @@ library('plotly')
 mymachine <- '/Users/ajpeluLap/' 
 # mymachine <- '/Users/ajpelu/' 
 
-mygpx <- paste0(mymachine, 'Dropbox/EXCURSIONES/georoutes/YOUR_TRACK.GPX')
+mygpx <- paste0(mymachine, 'Dropbox/EXCURSIONES/georoutes/2016_10_sn_barrancoAnimas.GPX')
 my_points <- readOGR(mygpx, layer = 'track_points', verbose = FALSE)
 mytrack <- readOGR(mygpx, layer = 'tracks', verbose = FALSE) 
 ```
@@ -161,3 +161,5 @@ p <- ggplot(as.data.frame(m), aes(x=cum_dist, y=ele)) +
 
 ggplotly(p)
 ```
+
+

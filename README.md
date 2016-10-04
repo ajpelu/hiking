@@ -17,6 +17,9 @@ For each route a dashboard is created using [R Markdownd](http://rmarkdown.rstud
 
 * [Tajos de la Virgen - Elorrieta (Sierra Nevada, Spain) - 2016-August](https://rawgit.com/ajpelu/hiking/master/analysis/2016_elorrieta.html)
 
+* [Barranco de las Ánimas, Collado del Diablo (Sierra Nevada, Spain) - 2016-October](https://rawgit.com/ajpelu/hiking/master/analysis/2016_sn_barranco_Animas.html)
+
+
 # More info:
 * [@ajpelu](https://twitter.com/ajpelu)
 * [ajperezluque.com](http://ajperezluque.com)
