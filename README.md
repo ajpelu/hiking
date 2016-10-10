@@ -19,6 +19,8 @@ For each route a dashboard is created using [R Markdownd](http://rmarkdown.rstud
 
 * [Barranco de las Ánimas, Collado del Diablo (Sierra Nevada, Spain) - 2016-October](https://rawgit.com/ajpelu/hiking/master/analysis/2016_sn_barranco_Animas.html)
 
+* [Barranco de las Yegueros (Tajos de Breca), Bérchules (Sierra Nevada, Spain) - 2016-October](https://rawgit.com/ajpelu/hiking/master/analysis/2016_sn_barranco_YeguerosBerchules.html)
+
 
 # More info:
 * [@ajpelu](https://twitter.com/ajpelu)
