@@ -21,6 +21,8 @@ For each route a dashboard is created using [R Markdownd](http://rmarkdown.rstud
 
 * [Barranco de las Yegueros (Tajos de Breca), Bérchules (Sierra Nevada, Spain) - 2016-October](https://rawgit.com/ajpelu/hiking/master/analysis/2016_sn_barranco_YeguerosBerchules.html)
 
+* [Acequias Arroyo San Juan (Hoya Mora): Acequia Hoyo Puente y Haza Mesa, Güejar-Sierra (Sierra Nevada, Spain) - 2016-October](https://rawgit.com/ajpelu/hiking/master/analysis/2016_sn_acequias_ayo_SanJuan.html)
+
 
 # More info:
 * [@ajpelu](https://twitter.com/ajpelu)
