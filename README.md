@@ -23,6 +23,8 @@ For each route a dashboard is created using [R Markdownd](http://rmarkdown.rstud
 
 * [Acequias Arroyo San Juan (Hoya Mora): Acequia Hoyo Puente y Haza Mesa, Güejar-Sierra (Sierra Nevada, Spain) - 2016-October](https://rawgit.com/ajpelu/hiking/master/analysis/2016_sn_acequias_ayo_SanJuan.html)
 
+* [Cortijo del Hornillo, Güejar-Sierra (Sierra Nevada, Spain) - 2016-October](https://rawgit.com/ajpelu/hiking/master/analysis/2016_sn_cortijo_Hornillo.html)
+
 
 # More info:
 * [@ajpelu](https://twitter.com/ajpelu)
