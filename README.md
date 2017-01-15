@@ -25,6 +25,8 @@ For each route a dashboard is created using [R Markdownd](http://rmarkdown.rstud
 
 * [Cortijo del Hornillo, Güejar-Sierra (Sierra Nevada, Spain) - 2016-October](https://rawgit.com/ajpelu/hiking/master/analysis/2016_sn_cortijo_Hornillo.html)
 
+* [Cortijo del Hornillo - Vereda Estrella, Güejar-Sierra (Sierra Nevada, Spain) - 2017-January](https://rawgit.com/ajpelu/hiking/master/analysis/2017_sn_Hornillo_Estrella.html)
+
 
 # More info:
 * [@ajpelu](https://twitter.com/ajpelu)
