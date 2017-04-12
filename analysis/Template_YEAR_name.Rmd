@@ -109,6 +109,7 @@ Row {.tabset .tabset-fade}
 ```{r}
 mymap <- leaflet() %>% 
   # BaseMaps 
+  addProviderTiles("OpenTopoMap", group = "OpenTopoMap") %>% 
   addWMSTiles('http://www.ideandalucia.es/services/toporaster10/wms?',
               layers = 'toporaster10',
               options = WMSTileOptions(format = "image/png", transparent = FALSE),
@@ -129,7 +130,7 @@ mymap <- leaflet() %>%
   # Layers control
   addLayersControl(position = 'bottomright',
                    # baseGroups = c("Topographical","Ortophotography 2009","PNOA"),
-                   baseGroups = c("Topographical","Ortophotography 2009"),
+                   baseGroups = c("OpenTopoMap","Topographical","Ortophotography 2009"),
                    overlayGroups = "Hiking trail", 
                    options = layersControlOptions(collapsed = FALSE)) %>%
   # Add routes
